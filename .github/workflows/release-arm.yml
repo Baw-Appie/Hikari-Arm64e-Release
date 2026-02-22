@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4.1.6
         with:
           repository: "Baw-Appie/llvm-project"
-          ref: "arm64e-upstream-next-hikari"
+          ref: "next-hikari"
           submodules: "recursive"
 
       - name: Setup Environment
@@ -46,17 +46,17 @@ jobs:
           cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=arm64 -DLLVM_ENABLE_PROJECTS=clang  -DLLVM_TARGETS_TO_BUILD="X86;ARM;AArch64" -DLLVM_ENABLE_ZSTD=OFF -DCMAKE_OSX_DEPLOYMENT_TARGET=12.0 -DLLVM_CREATE_XCODE_TOOLCHAIN=ON  -DLLVM_INCLUDE_TESTS=OFF -DLLVM_INCLUDE_EXAMPLES=OFF -DLLVM_INCLUDE_UTILS=OFF -DLLVM_INCLUDE_BENCHMARKS=OFF -DLLVM_BUILD_TOOLS=OFF -DLLVM_INSTALL_TOOLCHAIN_ONLY=ON -DCMAKE_INSTALL_PREFIX="./install" ../llvm
           ninja
           ninja install-xcode-toolchain
-          tar -czvf Hikari_LLVM19.0.0git_Apple-Silicon-Mac.tar.gz ./install/Toolchains/Hikari_LLVM19.0.0git.xctoolchain
+          tar -czvf Hikari_LLVM_Apple-Silicon-Mac.tar.gz install/Toolchains/*.xctoolchain
   
       - name: Upload Artifact
         uses: actions/upload-artifact@v4.3.3
         with:
-          name: Hikari_LLVM19.0.0git_Apple-Silicon-Mac.tar.gz
-          path: build/Hikari_LLVM19.0.0git_Apple-Silicon-Mac.tar.gz
+          name: Hikari_Apple-Silicon-Mac.tar.gz
+          path: build/*.tar.gz
           
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.TAG_NAME }}
           name: ARM Mac - ${{ env.GIT_REF }}
-          files: build/Hikari_LLVM19.0.0git_Apple-Silicon-Mac.tar.gz
+          files: build/*.tar.gz
