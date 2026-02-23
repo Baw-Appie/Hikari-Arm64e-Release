@@ -1,7 +1,9 @@
 # Hikari-Arm64e-Release
 
 This repository utilizes GitHub Actions to build an Xcode Toolchain integrated with Hikari and automatically publishes it.  
-You can download the appropriate Xcode Toolchain for your environment from the GitHub Releases page.
+You can download the appropriate Xcode Toolchain for your environment from the GitHub Releases page.  
+
+
 
 ## Usage Example
 ```
@@ -18,6 +20,7 @@ export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 A significant portion of the codebase in this repository was adapted or forked from existing projects.  
 This project would not have been possible without the foundational work of the repositories listed below. A huge thank you to all the original authors and contributors!
 
+* [llvm-project by Apple](https://github.com/Apple/llvm-project)
 * [Hikari by HikariObfuscator Team](https://github.com/HikariObfuscator/Hikari)
 * [HikariCore by HikariRebooted Team](https://github.com/HikariRebooted/HikariCore)
 * [Hikari-LLVM15 by 61bcdefg](https://github.com/61bcdefg/Hikari-LLVM15)
