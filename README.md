@@ -8,13 +8,13 @@ You can download the appropriate Xcode Toolchain for your environment from the G
 ## Usage Example
 ```
 export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
-./Hikari_LLVM23.0.0git.xctoolchain/usr/bin/clang test.c -mllvm -hikari -mllvm -enable-strcry -mllvm -enable-indibran -mllvm -enable-subobf -mllvm -enable-funcwra -mllvm -enable-splitobf -mllvm -enable-bcfobf
+./Hikari_LLVM24.0.0git.xctoolchain/usr/bin/clang test.c -arch arm64e -mllvm -hikari -mllvm -enable-strcry -mllvm -enable-indibran -mllvm -enable-subobf -mllvm -enable-funcwra -mllvm -enable-splitobf -mllvm -enable-bcfobf
 ```
 
 ## Source Code
 * [llvm-project (next-hikari branch)](https://github.com/Baw-Appie/llvm-project/tree/next-hikari)
-* [Hikari-LLVM23-Core](https://github.com/Baw-Appie/Hikari-LLVM23-Core)
-* [Hikari-LLVM23-Headers](https://github.com/Baw-Appie/Hikari-LLVM23-Headers)
+* [Hikari-LLVM24-Core](https://github.com/Baw-Appie/Hikari-LLVM24-Core)
+* [Hikari-LLVM24-Headers](https://github.com/Baw-Appie/Hikari-LLVM24-Headers)
 
 ## Acknowledgements
 A significant portion of the codebase in this repository was adapted or forked from existing projects.  
