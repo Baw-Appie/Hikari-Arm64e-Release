@@ -46,17 +46,17 @@ jobs:
           cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=x86_64 -DLLVM_ENABLE_PROJECTS=clang  -DLLVM_TARGETS_TO_BUILD="X86;ARM;AArch64" -DLLVM_ENABLE_ZSTD=OFF -DCMAKE_OSX_DEPLOYMENT_TARGET=12.0 -DLLVM_CREATE_XCODE_TOOLCHAIN=ON  -DLLVM_INCLUDE_TESTS=OFF -DLLVM_INCLUDE_EXAMPLES=OFF -DLLVM_INCLUDE_UTILS=OFF -DLLVM_INCLUDE_BENCHMARKS=OFF -DLLVM_BUILD_TOOLS=OFF -DLLVM_INSTALL_TOOLCHAIN_ONLY=ON -DCMAKE_INSTALL_PREFIX="./install" ../llvm
           ninja
           ninja install-xcode-toolchain
-          tar -czvf Hikari_LLVM19.0.0git_Intel-Mac.tar.gz ./install/Toolchains/Hikari_LLVM19.0.0git.xctoolchain
+          tar -czvf Hikari_LLVM_Intel-Mac.tar.gz install/Toolchains/*.xctoolchain
   
       - name: Upload Artifact
         uses: actions/upload-artifact@v4.3.3
         with:
-          name: Hikari_LLVM19.0.0git_Intel-Mac.tar.gz
-          path: build/Hikari_LLVM19.0.0git_Intel-Mac.tar.gz
+          name: Hikari_LLVM_Intel-Mac.tar.gz
+          path: build/Hikari_LLVM_Intel-Mac.tar.gz
           
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.TAG_NAME }}
           name: Intel Mac - ${{ env.GIT_REF }}
-          files: build/Hikari_LLVM19.0.0git_Intel-Mac.tar.gz
+          files: build/Hikari_LLVM_Intel-Mac.tar.gz
